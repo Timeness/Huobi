@@ -1,0 +1,225 @@
+<html>
+ <head>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <script src="https://registry.npmmirror.com/vue/3.3.11/files/dist/vue.global.js">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      background-color: #0d1117;
+      color: #c9d1d9;
+      font-family: 'Signika', sans-serif;
+      font-size: 14px;
+    }
+  </style>
+ </head>
+ <body>
+  <div class="p-4" id="app">
+   <div class="bg-gray-900 p-4 rounded-lg">
+    <div class="flex items-center mb-4">
+     <img alt="Bitcoin logo" class="w-10 h-10 rounded-full mr-2" src="https://placehold.co/40x40"/>
+     <div>
+      <div class="text-white font-bold">
+       BTC
+      </div>
+      <div class="text-gray-400">
+       Bitcoin
+      </div>
+     </div>
+    </div>
+    <div class="bg-gray-800 p-4 rounded-lg mb-4">
+     <div class="text-white font-bold mb-2">
+      Statistics
+     </div>
+     <div class="grid grid-cols-2 gap-4">
+      <div>
+       <div class="text-gray-400">
+        Market Cap
+        <i class="fas fa-info-circle">
+        </i>
+       </div>
+       <div class="text-white">
+        $1,893,277,999,351
+       </div>
+      </div>
+      <div>
+       <div class="text-gray-400">
+        Circulating Supply
+        <i class="fas fa-info-circle">
+        </i>
+       </div>
+       <div class="text-white">
+        19.8 Million
+       </div>
+      </div>
+      <div>
+       <div class="text-gray-400">
+        Fully Diluted Valuation
+        <i class="fas fa-info-circle">
+        </i>
+       </div>
+       <div class="text-white">
+        $1,893,278,854,444
+       </div>
+      </div>
+      <div>
+       <div class="text-gray-400">
+        Total Supply
+        <i class="fas fa-info-circle">
+        </i>
+       </div>
+       <div class="text-white">
+        19.8 Million
+       </div>
+      </div>
+      <div>
+       <div class="text-gray-400">
+        Market Cap / FDV Ratio
+       </div>
+       <div class="text-white">
+        1
+       </div>
+      </div>
+      <div>
+       <div class="text-gray-400">
+        Max Supply
+        <i class="fas fa-info-circle">
+        </i>
+       </div>
+       <div class="text-white">
+        21.0 Million
+       </div>
+      </div>
+      <div>
+       <div class="text-gray-400">
+        Trading Volume
+        <i class="fas fa-info-circle">
+        </i>
+       </div>
+       <div class="text-white">
+        $58,870,342,124
+       </div>
+      </div>
+      <div>
+       <div class="text-gray-400">
+        Added to Watchlist
+       </div>
+       <div class="text-white">
+        1,865,181
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="bg-gray-800 p-4 rounded-lg mb-4">
+     <div class="text-white font-bold mb-2">
+      Historical Data
+     </div>
+     <div class="grid grid-cols-2 gap-4">
+      <div>
+       <div class="text-gray-400">
+        24H High
+       </div>
+       <div class="text-white">
+        $97,328.00
+       </div>
+      </div>
+      <div>
+       <div class="text-gray-400">
+        24H Low
+       </div>
+       <div class="text-white">
+        $91,461.00
+       </div>
+      </div>
+      <div>
+       <div class="text-gray-400">
+        All Time High
+       </div>
+       <div class="text-white">
+        $108,135
+        <span class="text-red-500">
+         ▼ 11.5%
+        </span>
+       </div>
+       <div class="text-gray-400">
+        December 17, 2024 (28 days)
+       </div>
+      </div>
+      <div>
+       <div class="text-gray-400">
+        All Time Low
+       </div>
+       <div class="text-white">
+        $67.81
+        <span class="text-green-500">
+         ▲ 141,046%
+        </span>
+       </div>
+       <div class="text-gray-400">
+        July 06, 2013 (4210 days)
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="bg-gray-800 p-4 rounded-lg">
+     <div class="grid grid-cols-6 gap-4 text-center">
+      <div>
+       <div class="text-gray-400">
+        24H
+       </div>
+       <div class="text-green-500">
+        ▲ 4.5%
+       </div>
+      </div>
+      <div>
+       <div class="text-gray-400">
+        7D
+       </div>
+       <div class="text-red-500">
+        ▼ 2.6%
+       </div>
+      </div>
+      <div>
+       <div class="text-gray-400">
+        14D
+       </div>
+       <div class="text-green-500">
+        ▲ 0.9%
+       </div>
+      </div>
+      <div>
+       <div class="text-gray-400">
+        30D
+       </div>
+       <div class="text-red-500">
+        ▼ 7.3%
+       </div>
+      </div>
+      <div>
+       <div class="text-gray-400">
+        60D
+       </div>
+       <div class="text-green-500">
+        ▲ 7.6%
+       </div>
+      </div>
+      <div>
+       <div class="text-gray-400">
+        1Y
+       </div>
+       <div class="text-green-500">
+        ▲ 122.7%
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+   const { createApp } = Vue;
+    createApp({}).mount('#app');
+  </script>
+ </body>
+</html>
