@@ -3,28 +3,28 @@ const axios = require("axios");
 
 const bot = new Bot("7846859544:AAFXz2gA72sYL46oyPaAQq_bB_5hKy22jUg");
 let currentApi = "CoinGecko";
-let currentSymbol = ""; // To store the current symbol for refresh
+let currentSymbol = "";
 
 function formatResponse(data, apiName) {
-    return `> ${data.symbol.toUpperCase()}/USDT Market Info
+    let response = `${data.symbol.toUpperCase()}/USDT Market Info\n`;
 
->   - Price : ${data.price} USDT
->   - 24h Price change : ${data.priceChange24h} %
->   - 7d Price changes : ${data.priceChange7d} %
->   - 30d Price change : ${data.priceChange30d} %
->   - 24h High : ${data.high24h} USDT
->   - 24h Low : ${data.low24h} USDT
->   - 24h Volume : ${data.volume24h} USDT
->   - All Time high : ${data.allTimeHigh} USDT | ${data.athDaysAgo} days ago
->   - All Time low : ${data.allTimeLow} USDT | ${data.atlDaysAgo} days ago
+    if (data.price) response += `- Price: ${data.price} USDT\n`;
+    if (data.priceChange24h) response += `- 24h Price Change: ${data.priceChange24h} %\n`;
+    if (data.priceChange7d) response += `- 7d Price Change: ${data.priceChange7d} %\n`;
+    if (data.priceChange30d) response += `- 30d Price Change: ${data.priceChange30d} %\n`;
+    if (data.high24h) response += `- 24h High: ${data.high24h} USDT\n`;
+    if (data.low24h) response += `- 24h Low: ${data.low24h} USDT\n`;
+    if (data.volume24h) response += `- 24h Volume: ${data.volume24h} USDT\n`;
+    if (data.allTimeHigh) response += `- All Time High: ${data.allTimeHigh} USDT | ${data.athDaysAgo} days ago\n`;
+    if (data.allTimeLow) response += `- All Time Low: ${data.allTimeLow} USDT | ${data.atlDaysAgo} days ago\n`;
 
-> Statistics :
+    if (data.marketCap) response += `- Market Cap: ${data.marketCap} USDT\n`;
+    if (data.tradingVolume) response += `- Trading Volume: ${data.tradingVolume} USDT\n`;
+    if (data.circulatingSupply) response += `- Circulating Supply: ${data.circulatingSupply}\n`;
 
->   - Market Cap : ${data.marketCap} USDT
->   - Trading Volume : ${data.tradingVolume} USDT
->   - Circulating Supply : ${data.circulatingSupply}
-
-> By ${apiName}`;
+    response += `By ${apiName}`;
+    
+    return response;
 }
 
 async function fetchFromCoinGecko(symbol) {
@@ -91,7 +91,7 @@ async function fetchFromBinance(symbol) {
             circulatingSupply: "N/A",
         };
         return formatResponse(result, "BINANCE");
-    } catch{
+    } catch {
         return "Internal Error";
     }
 }
@@ -194,7 +194,7 @@ bot.command("data", async (ctx) => {
     const symbol = message[1];
     if (!symbol) return ctx.reply("Please provide a cryptocurrency symbol. Example: /data btc");
 
-    currentSymbol = symbol;  // Store the symbol for later refresh
+    currentSymbol = symbol;
 
     let result;
     switch (currentApi) {
@@ -247,9 +247,8 @@ bot.callbackQuery(/^set_(.+)/, async (ctx) => {
 });
 
 bot.callbackQuery(/^refresh_(.+)/, async (ctx) => {
-    const symbol = ctx.match[1];  // Get the symbol from the callback data
+    const symbol = ctx.match[1];
 
-    // Re-fetch the data using the current API
     let result;
     switch (currentApi) {
         case "CoinGecko":
@@ -274,7 +273,6 @@ bot.callbackQuery(/^refresh_(.+)/, async (ctx) => {
             result = "API not supported yet.";
     }
 
-    // Update the message with the new data and the refresh button
     const keyboard = new InlineKeyboard()
         .text("Refresh", `refresh_${symbol}`)
         .row();
